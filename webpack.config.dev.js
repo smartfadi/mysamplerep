@@ -1,26 +1,38 @@
 import path from 'path'
+import webpack from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin ({  
                                                         template: __dirname + '/server/index.html',
                                                         filename: 'index.html',
-                                                        inject: 'body'
+                                                        inject: 'body',
+                                                        reload: true
                                                     });
 export default {
-    mode: "production",
-    entry: path.join(__dirname, './client/index.js'),
+    mode: "development",
+    // devtools: 'eval-source-map',
+    entry: [
+        'webpack-hot-middleware/client',
+        path.join(__dirname, './client/index.js')
+    ],
     output: {
-        path: '/'
+        path: '/',
+        publicPath: '/'
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.js?$/,
                 include: path.join(__dirname, 'client'),
-                loader: 'babel-loader'
+                loaders: ['react-hot-loader/webpack','babel-loader']
             }
         ]
     },
-    plugins: [HTMLWebpackPluginConfig],
+    plugins: [
+        HTMLWebpackPluginConfig,
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ],
     resolve: {
         extensions: [ '.js','.jsx' ]
     }
