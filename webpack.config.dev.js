@@ -2,16 +2,15 @@ import path from 'path'
 import webpack from 'webpack'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin ({  
-                                                        template: __dirname + '/server/index.html',
+                                                        template: path.join(__dirname, './server/index.html'),
                                                         filename: 'index.html',
                                                         inject: 'body',
-                                                        reload: true
                                                     });
 export default {
     mode: "development",
     // devtools: 'eval-source-map',
     entry: [
-        'webpack-hot-middleware/client',
+        'webpack-hot-middleware/client?reload=true',
         path.join(__dirname, './client/index.js')
     ],
     output: {
@@ -21,7 +20,7 @@ export default {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 include: path.join(__dirname, 'client'),
                 loaders: ['react-hot-loader/webpack','babel-loader']
             }

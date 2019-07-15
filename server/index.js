@@ -12,7 +12,7 @@ const compiler = webpack(webpackConfig)
 app.use(webpackMiddleware(compiler,{
     hot: true,
     publicPath: webpackConfig.output.publicPath,
-    noInfo: true
+    noInfo: true,
 }))
 app.use(webpackHotMiddleware(compiler))
 
