@@ -5,6 +5,20 @@ class Dashboard extends Component {
         return(
             <div>
                 Dashboard
+                {/* <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+              {sections.map(section => (
+                <Link
+                  color="inherit"
+                  noWrap
+                  key={section}
+                  variant="body2"
+                  href="#"
+                  className={classes.toolbarLink}
+                >
+                  {section}
+                </Link>
+              ))}
+            </Toolbar> */}
             </div>
         )
     }
