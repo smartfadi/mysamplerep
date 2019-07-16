@@ -23,6 +23,11 @@ export default {
                 test: /\.js$/,
                 include: path.join(__dirname, 'client'),
                 loaders: ['react-hot-loader/webpack','babel-loader'] 
+            },
+            {
+                test: /\.md$/,
+                include: path.join(__dirname, 'client'),
+                loaders: ["html-loader","markdown-loader"]
             }
         ]
     },
