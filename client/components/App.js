@@ -6,7 +6,7 @@ import Home from './Home/Home'
 class App extends React.Component {
   render() {
     return (
-      <Router >
+      <Router  >
         {/* <Switch> */}
         <div>
           <Route component={Home} />
